@@ -1,0 +1,65 @@
+---
+import { Image } from "astro:assets"
+import Logo from "../assets/logo_plain.png"
+import { Icon } from "astro-icon/components"
+---
+
+<!-- <header>
+	<div class="logo">
+		<Image src={Logo} alt="Logo" height="40" />
+		<span class="text-2xl font-bold"
+			>Tool<span class="reg-span">box</span>24</span
+		>
+	</div>
+	<nav>
+		<ul>
+			<li><a href="#">Über uns</a></li>
+			<li><a href="#">Kontakt</a></li>
+		</ul>
+	</nav>
+</header> -->
+<header
+	class="px-4 lg:px-6 h-16 flex items-center justify-between bg-white shadow-sm sticky top-0 z-50"
+>
+	<a class="flex items-center justify-center logo" href="#">
+		<Image
+			src={Logo}
+			alt="Toolbox24 Logo"
+			width="40"
+			height="40"
+			loading="eager"
+		/>
+		<span class="text-2xl font-bold"
+			>Tool<span class="reg-span">box</span>24</span
+		>
+	</a>
+	<nav class="ml-auto hidden md:flex gap-4 sm:gap-6">
+		<a
+			class="text-sm font-medium hover:text-[#fdd500] transition-colors"
+			href="#">Über uns</a
+		>
+		<a
+			class="text-sm font-medium hover:text-[#fdd500] transition-colors"
+			href="#">Kontakt</a
+		>
+	</nav>
+	<button class="btn ml-4 md:hidden" aria-label="Menü umschalten">
+		<Icon class="h-6 w-6" name="ion:menu" />
+	</button>
+</header>
+
+<style>
+	.logo {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		& span {
+			font-size: 1.5rem;
+			color: #030303;
+			font-style: italic;
+		}
+		& .reg-span {
+			font-weight: 400;
+		}
+	}
+</style>
