@@ -12,6 +12,7 @@
 	},
 	"dependencies": {
 		"@astrojs/react": "^3.6.2",
+		"@astrojs/sitemap": "^3.2.1",
 		"@astrojs/tailwind": "^5.1.2",
 		"@iconify-json/fluent": "^1.2.4",
 		"@iconify-json/ion": "^1.2.1",
