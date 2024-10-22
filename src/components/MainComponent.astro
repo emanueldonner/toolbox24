@@ -3,6 +3,7 @@ import { Image } from "astro:assets"
 import { Icon } from "astro-icon/components"
 import StadtWienLogo from "../assets/StadtWien_Logo.png"
 import ToolsImage from "../assets/tools_side.jpg"
+import ToolsStockImage from "../assets/tools_stock.jpg"
 
 const tools = [
 	{
@@ -66,7 +67,7 @@ const howItWorks = [
 ]
 ---
 
-<script>
+<script defer>
 	function setupIntersectionObserver() {
 		const observer = new IntersectionObserver(
 			(entries) => {
@@ -104,6 +105,15 @@ const howItWorks = [
 				smoothScroll(target)
 			})
 		})
+
+		// Load background image
+		const toolsBackgroundImage = document.getElementById(
+			"tools-background-image"
+		)
+		const toolsBackgroundImageSrc = toolsBackgroundImage.getAttribute("src")
+		const toolsSection = document.getElementById("tool-section")
+		toolsSection.style.backgroundImage = `url(${toolsBackgroundImageSrc})`
+		toolsSection.classList.add("loaded")
 	})
 </script>
 
@@ -153,8 +163,18 @@ const howItWorks = [
 			</div>
 		</section>
 	</main>
-	<section class="w-full py-12 md:py-24 lg:py-32 tool-background">
-		<div class="container mx-auto px-4 md:px-6">
+	<section
+		id="tool-section"
+		class="relative w-full py-12 md:py-24 lg:py-32 tool-background"
+	>
+		<Image
+			id="tools-background-image"
+			src={ToolsStockImage}
+			alt="Background image of tools"
+			class="fixed-image absolute inset-0 w-full h-0 object-cover"
+			loading="lazy"
+		/>
+		<div class="relative z-10 container mx-auto px-4 md:px-6">
 			<h2
 				class="animate-on-scroll text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-12 text-white"
 			>
@@ -398,16 +418,27 @@ const howItWorks = [
 	.btn-outline:hover {
 		background-color: #e5e7eb;
 	}
-
 	.tool-background {
-		background-image: url("../assets/tools_stock.jpg");
-		background-size: cover;
-		background-position: center;
 		background-attachment: fixed;
-
+		background-size: cover; /* Ensure the image covers the entire section */
+		background-repeat: no-repeat;
+		position: relative;
+		z-index: 1;
+		opacity: 0;
+		transition: opacity 1.5s ease-in-out;
+		&.loaded {
+			opacity: 1;
+		}
 		& h2 {
 			filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.1));
 		}
+	}
+	#tools-background-image {
+		display: none;
+	}
+	.tool-background .container {
+		position: relative;
+		z-index: 10;
 	}
 
 	.top-section {
