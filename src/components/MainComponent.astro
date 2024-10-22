@@ -1,33 +1,68 @@
 ---
 import { Image } from "astro:assets"
 import { Icon } from "astro-icon/components"
+import StadtWienLogo from "../assets/StadtWien_Logo.png"
 import ToolsImage from "../assets/tools_side.jpg"
 
 const tools = [
 	{
 		icon: "fluent:toolbox-12-filled",
-		title: "Elektrobohrer",
+		link: "https://toolbox24.mysharefox.com/de/products/1018/bohrmaschine-schlagbohrschrauber-akku-makita-dhp484",
+		price: "8",
+		title: "Bohrmaschine",
 		description:
-			"Von einfachen DIY- bis hin zu schweren Bauarbeiten, finden Sie den perfekten Bohrer für Ihr Projekt.",
+			"Der Makita Akku-Bohrschrauber DHP484 ist das ideale Werkzeug für alle, die ein leistungsstarkes und zuverlässiges Profi-Werkzeug suchen.",
 	},
 	{
 		icon: "fluent:wrench-24-filled",
-		title: "Elektroschleifer",
+		price: "12",
+		title: "Schleifmaschine",
+		link: "https://toolbox24.mysharefox.com/de/products/1032/schwingschleifer-schleifmaschine-akku-makita-dbo380-im-makpac",
 		description:
-			"Glätten Sie Oberflächen mühelos mit unserer Auswahl an professionellen Schleifern.",
+			"Der Makita Akku-Schwingschleifer DBO380 ist das ideale Werkzeug für alle Deine Schleifarbeiten.",
 	},
 	{
 		icon: "ion:hammer",
-		title: "Presslufthammer",
+		price: "16",
+		link: "https://toolbox24.mysharefox.com/de/products/1039/teppichreiniger-polsterreiniger-textilreiniger-k%C3%A4rcher-puzzi-10-1",
+		title: "Textilreiniger",
 		description:
-			"Bewältigen Sie harte Abrissarbeiten mit unseren leistungsstarken und zuverlässigen Presslufthämmern.",
+			"Der Kärcher Puzzi 10/1 Teppichreiniger ist die perfekte Lösung für gründliche und effiziente Reinigung von Textiloberflächen in Deinem Zuhause oder Geschäft.",
 	},
 ]
 
 const whyChooseUs = [
-	"Sparen Sie Geld bei teuren Werkzeugen",
-	"Zugang zu professioneller Ausrüstung",
-	"Flexible Mietzeiten",
+	"Rund um die Uhr Verfügbarkeit – Flexibel 24/7 Werkzeuge holen und zurückgeben.",
+	"Einfach Online buchen – Schnell und bequem per Klick.",
+	"Günstig & Platzsparend – Spar dir teure Käufe und Lagerplatz.",
+	"Nachhaltig handeln – Umweltfreundlich durch Teilen statt Kaufen.",
+	"Keine Wartung nötig – Werkzeuge immer einsatzbereit, ohne Aufwand.",
+	"Profiwerkzeug - Zugang zu professioneller Ausrüstung.",
+]
+
+const howItWorks = [
+	{
+		icon: "lucide:search",
+		title: "Werkzeug finden",
+		description: "Werkzeug online aussuchen und Verfügbarkeit überprüfen",
+	},
+	{
+		icon: "lucide:calendar",
+		title: "Produkt reservieren",
+		description: "Reserviere dein Werkzeug und hole es rund um die Uhr ab.",
+	},
+	{
+		icon: "lucide:box",
+		title: "Gerät abholen",
+		description:
+			"Komm rund um die Uhr in die Toolbox24. Öffne die Locker mit deinen persönlichen Pin-Codes und starte die Umsetzung deines Projektes.",
+	},
+	{
+		icon: "lucide:rotate-ccw",
+		title: "Werkzeug zurückbringen",
+		description:
+			"Sobald du fertig bist, bringe das Werkzeug zurück. Das kannst jederzeit während deines Mietzeitraums machen.",
+	},
 ]
 ---
 
@@ -50,12 +85,32 @@ const whyChooseUs = [
 	}
 
 	document.addEventListener("DOMContentLoaded", setupIntersectionObserver)
+
+	function smoothScroll(target) {
+		const element = document.getElementById(target)
+		if (element) {
+			window.scrollTo({
+				top: element.offsetTop,
+				behavior: "smooth",
+			})
+		}
+	}
+	document.addEventListener("DOMContentLoaded", function () {
+		const anchors = document.querySelectorAll('a[href^="#"]')
+		anchors.forEach(function (anchor) {
+			anchor.addEventListener("click", function (event) {
+				event.preventDefault()
+				const target = anchor.getAttribute("href").substring(1)
+				smoothScroll(target)
+			})
+		})
+	})
 </script>
 
 <div class="flex flex-col min-h-screen bg-gray-50">
 	<main class="flex-1">
 		<section
-			class="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-gray-100 top-section"
+			class="w-full pt-12 md:pt-24 lg:pt-32 xl:py-48 bg-gray-100 top-section flex flex-col justify-between"
 		>
 			<div class="container mx-auto px-4 md:px-6">
 				<div
@@ -65,11 +120,13 @@ const whyChooseUs = [
 						<h1
 							class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none text-gray-900"
 						>
-							Werkzeug leihen rund um die Uhr!
+							Miete Dein Werkzeug Rund um die Uhr!
 						</h1>
-						<p class="mx-auto max-w-[700px] text-gray-700 md:text-xl">
-							Zugang zu professionellen Werkzeugen ohne hohe Kosten. Perfekt für
-							DIY-Enthusiast:innen und Heimwerker:innen.
+						<p class="mx-auto max-w-[800px] text-gray-700 md:text-xl">
+							Miete hochwertige Werkzeuge und Handwerksgeräte einfach online.
+							Hol sie rund um die Uhr aus unseren Self-Service-Lockern und bring
+							sie genauso flexibel zurück. Spar Geld, Platz und lebe
+							nachhaltiger mit Toolbox24!
 						</p>
 					</div>
 					<div class="w-full max-w-sm space-y-2">
@@ -79,119 +136,221 @@ const whyChooseUs = [
 					</div>
 				</div>
 			</div>
-		</section>
-		<section class="w-full py-12 md:py-24 lg:py-32 tool-background">
-			<div class="container mx-auto px-4 md:px-6">
-				<h2
-					class="animate-on-scroll text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-12 text-white"
-				>
-					Beliebte Werkzeuge
-				</h2>
-				<div class="grid gap-6 lg:grid-cols-3 lg:gap-12">
-					{
-						tools.map((tool) => (
-							<div class="animate-on-scroll flex flex-col items-center space-y-4 p-6 rounded-lg bg-gray-50 shadow-lg transition-all hover:shadow-xl">
-								<Icon class="h-12 w-12 text-[#fdd500]" name={tool.icon} />
-								<h3 class="text-xl font-bold text-gray-900">{tool.title}</h3>
-								<p class="text-gray-600 text-center">{tool.description}</p>
-							</div>
-						))
-					}
-				</div>
-			</div>
-		</section>
-		<section class="w-full py-12 md:py-24 lg:py-32 bg-[#fdd500] bottom-section">
-			<div class="container mx-auto px-4 md:px-6">
-				<div class="grid gap-10 lg:grid-cols-2 lg:gap-12 items-center">
-					<div class="animate-on-scroll space-y-4">
-						<h2
-							class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-gray-800"
+			<!-- bottom center Logo and "Gefördert mit Mitteln der Stadt Wien" -->
+
+			<div class="mt-20 mb-10">
+				<div class="flex flex-col items-center space-y-4 text-center">
+					<div class="space-y-2 flex flex-col items-center">
+						<Image src={StadtWienLogo} alt="Logo der Stadt Wien" width="80" />
+						<p
+							class="tracking-tighter px-4 py-2 text-sm text-gray-700 bg-gray-100 rounded-lg"
 						>
-							Warum Toolbox24 wählen?
-						</h2>
-						<ul class="space-y-3">
-							{
-								whyChooseUs.map((item) => (
-									<li class="flex items-center space-x-3 text-gray-800">
-										<svg
-											class="h-5 w-5 flex-shrink-0"
-											fill="none"
-											height="24"
-											stroke="currentColor"
-											stroke-linecap="round"
-											stroke-linejoin="round"
-											stroke-width="2"
-											viewBox="0 0 24 24"
-											width="24"
-											xmlns="http://www.w3.org/2000/svg"
-										>
-											<polyline points="20 6 9 17 4 12" />
-										</svg>
-										<span>{item}</span>
-									</li>
-								))
-							}
-						</ul>
-					</div>
-					<div class="animate-on-scroll flex justify-center">
-						<Image
-							alt="Glücklicher Kunde, der ein gemietetes Elektrowerkzeug benutzt"
-							class="rounded-lg object-cover w-full max-w-[600px] shadow-lg"
-							height="400"
-							src={ToolsImage}
-							style={{
-								aspectRatio: "600/400",
-								objectFit: "cover",
-							}}
-							width="600"
-						/>
-					</div>
-				</div>
-			</div>
-		</section>
-		<section class="w-full py-12 md:py-24 lg:py-32 bg-white">
-			<div class="container mx-auto px-4 md:px-6">
-				<div
-					class="animate-on-scroll flex flex-col items-center space-y-4 text-center"
-				>
-					<div class="space-y-2">
-						<h2
-							class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-gray-900"
-						>
-							Bereit, Ihr Projekt zu starten?
-						</h2>
-						<p class="mx-auto max-w-[700px] text-gray-700 md:text-xl">
-							Treten Sie Toolbox24 noch heute bei und erhalten Sie Zugang zu
-							Tausenden von Werkzeugen für Ihr nächstes DIY-Abenteuer.
+							Gefördert mit Mitteln der Stadt Wien
 						</p>
-					</div>
-					<div class="space-x-4">
-						<button class="btn btn-primary">
-							<a href="https://toolbox24.mysharefox.com/en">Jetzt loslegen</a>
-						</button>
 					</div>
 				</div>
 			</div>
 		</section>
 	</main>
-	<footer
-		class="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t bg-white"
-	>
-		<p class="text-xs text-gray-700">
-			© 2024 Toolbox24. Alle Rechte vorbehalten.
-		</p>
-		<nav class="sm:ml-auto flex gap-4 sm:gap-6">
-			<a
-				class="text-xs hover:underline underline-offset-4 text-gray-700"
-				href="#">Nutzungsbedingungen</a
+	<section class="w-full py-12 md:py-24 lg:py-32 tool-background">
+		<div class="container mx-auto px-4 md:px-6">
+			<h2
+				class="animate-on-scroll text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-12 text-white"
 			>
-			<a
-				class="text-xs hover:underline underline-offset-4 text-gray-700"
-				href="#">Datenschutz</a
+				Beliebte Werkzeuge
+			</h2>
+			<div class="grid gap-6 lg:grid-cols-3 lg:gap-12">
+				{
+					tools.map((tool) => (
+						<a href={tool.link} target="_blank">
+							<div class="animate-on-scroll flex flex-col items-center p-6 rounded-lg bg-gray-50 shadow-lg transition-all hover:shadow-xl hover:bg-white">
+								<Icon class="h-12 w-12 text-[#fdd500]" name={tool.icon} />
+								<h3 class="text-xl font-bold text-gray-900 mb-0">
+									{tool.title}
+								</h3>
+								<p class="text-s text-gray-400">{tool.price}€ / Tag</p>
+								<p class="my-4 text-gray-600 text-center">{tool.description}</p>
+								<button class="btn btn-primary">Jetzt leihen</button>
+							</div>
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</section>
+	<section class="w-full py-12 md:py-24 lg:py-32 bg-[#fdd500] bottom-section">
+		<div class="container mx-auto px-4 md:px-6">
+			<div class="grid gap-10 lg:grid-cols-2 lg:gap-12 items-center">
+				<div class="animate-on-scroll space-y-4">
+					<h2
+						class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-gray-800"
+					>
+						Warum Toolbox24?
+					</h2>
+					<ul class="space-y-3">
+						{
+							whyChooseUs.map((item) => (
+								<li class="flex items-center space-x-3 text-gray-800">
+									<svg
+										class="h-5 w-5 flex-shrink-0"
+										fill="none"
+										height="24"
+										stroke="currentColor"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										viewBox="0 0 24 24"
+										width="24"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<polyline points="20 6 9 17 4 12" />
+									</svg>
+									<span>{item}</span>
+								</li>
+							))
+						}
+					</ul>
+				</div>
+				<div class="animate-on-scroll flex justify-center">
+					<Image
+						alt="Abbildung: Werkzeuge auf dem Tisch"
+						class="rounded-lg object-cover w-full max-w-[600px] shadow-lg"
+						height="400"
+						src={ToolsImage}
+						style={{
+							aspectRatio: "600/400",
+							objectFit: "cover",
+						}}
+						width="600"
+					/>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="w-full py-12 md:py-24 lg:py-32 bg-white how-it-works-section">
+		<div class="container mx-auto px-4 md:px-6">
+			<h2
+				class="animate-on-scroll text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-12 text-gray-900"
 			>
-		</nav>
-	</footer>
+				Wie funktioniert Toolbox24?
+			</h2>
+			<div class="how-it-works-container">
+				<div class="how-it-works-line"></div>
+				{
+					howItWorks.map((step, index) => (
+						<div class="animate-on-scroll how-it-works-item">
+							<div class="how-it-works-icon">
+								<Icon class="h-12 w-12" name={step.icon} />
+							</div>
+							<div class="how-it-works-content">
+								<h3 class="how-it-works-title">
+									{index + 1}. {step.title}
+								</h3>
+								<p class="text-gray-600">{step.description}</p>
+							</div>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</section>
+	<section id="kontakt" class="w-full py-12 md:py-24 lg:py-32 bg-[#fdd500]">
+		<div class="container mx-auto px-4 md:px-6">
+			<div
+				class="animate-on-scroll flex flex-col items-center space-y-4 text-center"
+			>
+				<h2
+					class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-gray-900"
+				>
+					Wo du uns findest
+				</h2>
+				<div class="pt-8 flex flex-col align-center items-center gap-2">
+					<div class="contact-info">
+						<Icon class="contact-icon h-5 w-5 text-gray-700" name="ion:pin" />
+						<p class="text-gray-700">Sturzgasse 11, 1150 Wien</p>
+					</div>
+					<div class="contact-info">
+						<Icon
+							class="contact-icon h-5 w-5 text-gray-700"
+							name="ion:phone-portrait"
+						/>
+						<p class="text-gray-700">+43 (0) 681 845 14 313</p>
+					</div>
+					<div class="contact-info">
+						<Icon
+							class="contact-icon h-5 w-5 text-gray-700"
+							name="ion:mail-outline"
+						/>
+						<p class="text-gray-700">info@toolbox24.at</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="w-full py-12 md:py-24 lg:py-32 bg-white">
+		<div class="container mx-auto px-4 md:px-6">
+			<div
+				class="animate-on-scroll flex flex-col items-center space-y-4 text-center"
+			>
+				<div class="space-y-2">
+					<h2
+						class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-gray-900"
+					>
+						Bereit, dein Projekt zu starten?
+					</h2>
+					<p class="mx-auto max-w-[700px] text-gray-700 md:text-xl">
+						Treten Sie Toolbox24 noch heute bei und erhalten Sie Zugang zu
+						Tausenden von Werkzeugen für Ihr nächstes DIY-Abenteuer.
+					</p>
+				</div>
+				<div class="space-x-4">
+					<button class="btn btn-primary">
+						<a href="https://toolbox24.mysharefox.com/en">Jetzt loslegen</a>
+					</button>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="w-full py-12 md:py-24 lg:py-32 bg-[#fdd500]">
+		<div class="container mx-auto px-4 md:px-6">
+			<div
+				class="animate-on-scroll flex flex-col items-center space-y-4 text-center"
+			>
+				<h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+					Wer ist Toolbox24?
+				</h2>
+				<div class="max-w-3xl mx-auto">
+					<p class="text-xl mb-6">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in
+						dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed
+						auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in
+						nulla enim.
+					</p>
+					<p class="text-xl">
+						Maecenas faucibus mollis interdum. Donec sed odio dui. Curabitur
+						blandit tempus porttitor. Etiam porta sem malesuada magna mollis
+						euismod. Vestibulum id ligula porta felis euismod semper.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
 </div>
+<footer
+	class="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t bg-white"
+>
+	<p class="text-xs text-gray-700">
+		© 2024 Toolbox24. Alle Rechte vorbehalten.
+	</p>
+	<nav class="sm:ml-auto flex gap-4 sm:gap-6">
+		<a class="text-xs hover:underline underline-offset-4 text-gray-700" href="#"
+			>Nutzungsbedingungen</a
+		>
+		<a class="text-xs hover:underline underline-offset-4 text-gray-700" href="#"
+			>Datenschutz</a
+		>
+	</nav>
+</footer>
 
 <style>
 	.animate-on-scroll {
@@ -262,5 +421,91 @@ const whyChooseUs = [
 	h1,
 	h2 {
 		font-style: italic !important;
+	}
+
+	.how-it-works-section {
+		background: linear-gradient(to bottom, white, #fdd70041);
+	}
+
+	.how-it-works-container {
+		position: relative;
+		padding: 2rem 0;
+		margin: 0 auto;
+		max-width: 1200px;
+	}
+
+	.how-it-works-line {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 50%;
+		width: 100%;
+		transform: translateX(-50%);
+	}
+
+	.how-it-works-item {
+		display: flex;
+		align-items: center;
+		margin-bottom: 4rem;
+	}
+
+	.how-it-works-item:nth-child(odd) {
+		flex-direction: row-reverse;
+		& .how-it-works-content {
+			text-align: right;
+		}
+	}
+
+	.how-it-works-icon {
+		background-color: #fdd500;
+		border-radius: 50%;
+		padding: 1.5rem;
+		margin: 0 2rem;
+		z-index: 1;
+	}
+
+	.how-it-works-content {
+		flex: 1;
+		max-width: 50%;
+	}
+
+	.how-it-works-title {
+		font-weight: 600;
+		font-size: 1.5rem;
+		margin-bottom: 0.5rem;
+	}
+
+	@media (max-width: 768px) {
+		.how-it-works-container {
+			padding: 0 1rem;
+		}
+
+		.how-it-works-item,
+		.how-it-works-item:nth-child(odd) {
+			flex-direction: column;
+		}
+		.how-it-works-item .how-it-works-content,
+		.how-it-works-item:nth-child(odd) .how-it-works-content {
+			text-align: center;
+		}
+
+		.how-it-works-icon {
+			margin: 0;
+			margin-bottom: 1rem;
+		}
+
+		.how-it-works-content {
+			max-width: 100%;
+		}
+	}
+
+	.contact-info {
+		display: flex;
+		align-items: center;
+		margin-bottom: 1rem;
+	}
+
+	.contact-icon {
+		margin-right: 0.5rem;
 	}
 </style>
