@@ -4,6 +4,7 @@ import { Icon } from "astro-icon/components"
 import StadtWienLogo from "../assets/StadtWien_Logo.png"
 import ToolsImage from "../assets/tools_side.jpg"
 import ToolsStockImage from "../assets/tools_stock.jpg"
+import SustainablityIcon from "../assets/sustainability.png"
 
 const tools = [
 	{
@@ -120,7 +121,7 @@ const howItWorks = [
 <div class="flex flex-col min-h-screen bg-gray-50">
 	<main class="flex-1">
 		<section
-			class="w-full pt-12 md:pt-24 lg:pt-32 xl:py-48 bg-gray-100 top-section flex flex-col justify-between"
+			class="top-section w-full pt-12 md:pt-24 lg:pt-32 xl:py-48 bg-secondary-bg-color flex flex-col justify-between"
 		>
 			<div class="container mx-auto px-4 md:px-6">
 				<div
@@ -141,7 +142,7 @@ const howItWorks = [
 					</div>
 					<div class="w-full max-w-sm space-y-2">
 						<a
-							class="btn btn-primary"
+							class="btn btn-primary bg-cta-color text-black border-2 border-cta-color hover:bg-white"
 							href="https://toolbox24.mysharefox.com/en">Werkzeuge finden</a
 						>
 					</div>
@@ -152,9 +153,25 @@ const howItWorks = [
 			<div class="mt-20 mb-10">
 				<div class="flex flex-col items-center space-y-4 text-center">
 					<div class="space-y-2 flex flex-col items-center">
-						<Image src={StadtWienLogo} alt="Logo der Stadt Wien" width="80" />
+						<div class="flex items-end gap-8">
+							<div>
+								<Image
+									src={SustainablityIcon}
+									alt="Sustainablity Logo"
+									width="32"
+									height="32"
+								/>
+							</div>
+							<div>
+								<Image
+									src={StadtWienLogo}
+									alt="Logo der Stadt Wien"
+									height="28"
+								/>
+							</div>
+						</div>
 						<p
-							class="tracking-tighter px-4 py-2 text-sm text-gray-700 bg-gray-100 rounded-lg"
+							class="tracking-tighter px-4 py-2 text-sm text-gray-700 rounded-lg"
 						>
 							Gefördert mit Mitteln der Stadt Wien
 						</p>
@@ -400,14 +417,14 @@ const howItWorks = [
 			color 0.2s;
 	}
 
-	.btn-primary {
+	/* .btn-primary {
 		background-color: #fdd500;
 		color: #030303;
 	}
 
 	.btn-primary:hover {
 		background-color: #efd022;
-	}
+	} */
 
 	.btn-outline {
 		background-color: #f3f4f6;
