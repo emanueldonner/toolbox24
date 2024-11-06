@@ -5,10 +5,15 @@ import StadtWienLogo from "../assets/StadtWien_Logo.png"
 import ToolsImage from "../assets/tools_side.jpg"
 import ToolsStockImage from "../assets/tools_stock.jpg"
 import SustainablityIcon from "../assets/sustainability.png"
+import AboutUs from "../assets/about_us.webp"
+import Drill from "../assets/tools/DDF485_C8C0_1724670187.webp"
+import Grinder from "../assets/tools/DBO380_C2R0_1724696245.webp"
+import Cleaner from "../assets/tools/1193120_std_1-Portal_Image_High_3k_1725472813.webp"
 
 const tools = [
 	{
 		icon: "fluent:toolbox-12-filled",
+		image: Drill,
 		link: "https://toolbox24.mysharefox.com/de/products/1018/bohrmaschine-schlagbohrschrauber-akku-makita-dhp484",
 		price: "8",
 		title: "Bohrmaschine",
@@ -17,6 +22,7 @@ const tools = [
 	},
 	{
 		icon: "fluent:wrench-24-filled",
+		image: Grinder,
 		price: "12",
 		title: "Schleifmaschine",
 		link: "https://toolbox24.mysharefox.com/de/products/1032/schwingschleifer-schleifmaschine-akku-makita-dbo380-im-makpac",
@@ -25,6 +31,7 @@ const tools = [
 	},
 	{
 		icon: "ion:hammer",
+		image: Cleaner,
 		price: "16",
 		link: "https://toolbox24.mysharefox.com/de/products/1039/teppichreiniger-polsterreiniger-textilreiniger-k%C3%A4rcher-puzzi-10-1",
 		title: "Textilreiniger",
@@ -202,13 +209,21 @@ const howItWorks = [
 					tools.map((tool) => (
 						<a href={tool.link} target="_blank">
 							<div class="animate-on-scroll flex flex-col items-center p-6 rounded-lg bg-gray-50 shadow-lg transition-all hover:shadow-xl hover:bg-white">
-								<Icon class="h-12 w-12 text-[#fdd500]" name={tool.icon} />
+								{/* <Icon class="h-12 w-12 text-[#fdd500]" name={tool.icon} /> */}
+								<Image
+									class="w-28 mb-4 object-cover rounded-lg"
+									src={tool.image}
+									alt={tool.title}
+									loading="lazy"
+								/>
 								<h3 class="text-xl font-bold text-gray-900 mb-0">
 									{tool.title}
 								</h3>
 								<p class="text-s text-slate-600">{tool.price}€ / Tag</p>
 								<p class="my-4 text-gray-600 text-center">{tool.description}</p>
-								<button class="btn btn-primary">Jetzt leihen</button>
+								<button class="btn btn-primary bg-cta-color text-black border-2 border-cta-color hover:bg-white">
+									Jetzt leihen
+								</button>
 							</div>
 						</a>
 					))
@@ -326,7 +341,7 @@ const howItWorks = [
 			</div>
 		</div>
 	</section>
-	<section class="w-full py-12 md:py-24 lg:py-32 bg-white">
+	<!-- <section class="w-full py-12 md:py-24 lg:py-32 bg-white">
 		<div class="container mx-auto px-4 md:px-6">
 			<div
 				class="animate-on-scroll flex flex-col items-center space-y-4 text-center"
@@ -343,33 +358,107 @@ const howItWorks = [
 					</p>
 				</div>
 				<div class="space-x-4">
-					<button class="btn btn-primary">
+					<button
+						class="btn btn-primary bg-cta-color text-black border-2 border-cta-color hover:bg-white"
+					>
 						<a href="https://toolbox24.mysharefox.com/en">Jetzt loslegen</a>
 					</button>
 				</div>
 			</div>
 		</div>
-	</section>
-	<section class="w-full py-12 md:py-24 lg:py-32 bg-[#fdd500]">
+	</section> -->
+	<section class="w-full py-12 md:py-24 lg:py-32 bg-white">
 		<div class="container mx-auto px-4 md:px-6">
 			<div
 				class="animate-on-scroll flex flex-col items-center space-y-4 text-center"
 			>
 				<h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-					Wer ist Toolbox24?
+					Über Toolbox24
 				</h2>
+				<div class="image">
+					<Image src={AboutUs} alt="About us" loading="lazy" />
+				</div>
 				<div class="max-w-3xl mx-auto">
-					<p class="text-xl mb-6">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in
-						dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed
-						auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in
-						nulla enim.
+					<p class="text-l mb-6">
+						Hallo, ich bin Wibke, die Gründerin von Toolbox24. Toolbox24 ist
+						mein Herzensprojekt, doch es wäre nicht das, was es heute ist, ohne
+						mein engagiertes Team an Freelancern, die mit mir daran arbeiten.
+						Gemeinsam haben wir eine innovative Lösung entwickelt, um
+						Werkzeugverleih für alle in Wien einfach und nachhaltig zu
+						gestalten.
 					</p>
-					<p class="text-xl">
-						Maecenas faucibus mollis interdum. Donec sed odio dui. Curabitur
-						blandit tempus porttitor. Etiam porta sem malesuada magna mollis
-						euismod. Vestibulum id ligula porta felis euismod semper.
+					<p class="text-l">
+						Jeder von uns bringt unterschiedliche Kompetenzen und Erfahrungen
+						ein, um sicherzustellen, dass Toolbox24 nicht nur praktisch und
+						benutzerfreundlich ist, sondern auch zu einem nachhaltigeren Konsum
+						beiträgt. Wir freuen uns, euch rund um die Uhr Zugang zu
+						hochwertigen Werkzeugen bieten zu können – für all eure Projekte,
+						groß oder klein!
 					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- new section regarding Preise & Kaution -->
+	<section class="w-full py-12 md:py-24 lg:py-32 bg-secondary-color">
+		<div class="container mx-auto px-4 md:px-6">
+			<div
+				class="animate-on-scroll flex flex-col items-center space-y-4 text-center"
+			>
+				<h2
+					class="text-3xl font-bold tracking-tighter mb-4 sm:text-4xl md:text-5xl text-gray-900"
+				>
+					Preise & Kaution
+				</h2>
+				<div
+					class="preise-kaution-wrapper space-y-12 md:space-y-0 md:space-x-12 flex flex-col md:flex-row"
+				>
+					<div
+						class="preise-block animate-on-scroll md:self-end text-right md:text-left"
+					>
+						<h4
+							class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-gray-900"
+						>
+							Preise
+						</h4>
+						<div class="space-y-2">
+							<p class="text-l">
+								Unsere Mietpreise sind so gestaltet, dass du das beste
+								Preis-Leistungs-Verhältnis erhältst – je länger du mietest,
+								desto günstiger wird der Tagespreis! So kannst du flexibel
+								wählen, ob du das Werkzeug nur für kurze Zeit benötigst oder
+								länger einsetzen möchtest. Am einfachsten ist es, einfach
+								verschiedene Mietdauern anzuklicken und direkt zu sehen, wann
+								sich die Miete für dich am meisten lohnt.
+							</p>
+						</div>
+					</div>
+					<div class="kaution-block animate-on-scroll md:self-start text-left">
+						<h4
+							class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-gray-900"
+						>
+							Kaution
+						</h4>
+						<div class="space-y-2">
+							<p class="text-l">
+								Die Kaution funktioniert ähnlich wie bei der Buchung eines
+								Hotels oder Mietwagens. Bei der Bestellung wird ein zusätzlicher
+								Betrag auf deiner Karte reserviert, der als Sicherheit bei
+								möglichen Schäden oder verspäteter Rückgabe dient. Sobald du die
+								Maschine zurückgegeben hast, überprüfen wir das Gerät und geben
+								den Betrag auf deiner Karte frei. Alles läuft automatisch ab, du
+								musst nichts weiter tun. Für mehr Informationen siehe unsere
+								Hilfeseiten.
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="space-x-4">
+					<button
+						class="btn btn-primary bg-cta-color text-black border-2 border-cta-color mt-4 hover:bg-white"
+					>
+						<a href="https://toolbox24.mysharefox.com/en">Jetzt loslegen</a>
+					</button>
 				</div>
 			</div>
 		</div>
@@ -557,5 +646,52 @@ const howItWorks = [
 
 	.contact-icon {
 		margin-right: 0.5rem;
+	}
+	.preise-kaution-wrapper {
+		display: flex;
+		flex-direction: column;
+	}
+
+	@media (min-width: 768px) {
+		.preise-kaution-wrapper {
+			flex-direction: row;
+			justify-content: space-between;
+		}
+	}
+
+	.preise-block,
+	.kaution-block {
+		opacity: 0;
+		transform: translateX(100px);
+		transition:
+			opacity 1s,
+			transform 1s;
+	}
+
+	.preise-block.visible {
+		opacity: 1;
+		transform: translateX(0);
+	}
+
+	.kaution-block {
+		transform: translateX(-100px);
+	}
+
+	.kaution-block.visible {
+		opacity: 1;
+		transform: translateX(0);
+	}
+
+	@media (max-width: 768px) {
+		.preise-block,
+		.kaution-block {
+			align-self: center;
+			text-align: center;
+			transform: none;
+		}
+	}
+
+	h4 {
+		font-size: 1.5rem;
 	}
 </style>
