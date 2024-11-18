@@ -4,22 +4,25 @@ import Logo from "../assets/logo_new.svg"
 import { Icon } from "astro-icon/components"
 ---
 
-<!-- <header>
-	<div class="logo">
-		<Image src={Logo} alt="Logo" height="40" />
-		<span class="text-2xl font-bold"
-			>Tool<span class="reg-span">box</span>24</span
-		>
-	</div>
-	<nav>
-		<ul>
-			<li><a href="#">Über uns</a></li>
-			<li><a href="#">Kontakt</a></li>
-		</ul>
-	</nav>
-</header> -->
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+		const menuToggle = document.getElementById("menu-toggle")
+		const mobileNav = document.getElementById("mobile-nav")
+		const closeMenu = document.getElementById("close-menu")
+
+		menuToggle.addEventListener("click", () => {
+			mobileNav.style.transform = "translateX(0)"
+		})
+
+		closeMenu.addEventListener("click", () => {
+			mobileNav.style.transform = "translateX(100%)"
+		})
+	})
+</script>
+
 <header
-	class="px-4 lg:px-6 h-16 flex items-center justify-between bg-secondary-color text-black"
+	class="px-4 lg:px-6 h-16 flex items-center justify-between bg-secondary-color text-black relative"
+	style="z-index: 100;"
 >
 	<a class="flex items-center justify-center logo" href="#">
 		<Image src={Logo} alt="Toolbox24 Logo" height="32" loading="eager" />
@@ -34,9 +37,38 @@ import { Icon } from "astro-icon/components"
 			href="https://toolbox24.mysharefox.com/help?header=4">Kontakt</a
 		>
 	</nav>
-	<button class="btn ml-4 md:hidden" aria-label="Menü umschalten">
+	<button
+		id="menu-toggle"
+		class="btn ml-4 md:hidden"
+		aria-label="Menü umschalten"
+	>
 		<Icon class="h-6 w-6" name="ion:menu" />
 	</button>
+
+	<div
+		id="mobile-nav"
+		class="fixed top-0 right-0 w-3/4 max-w-sm h-full bg-secondary-color shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out"
+	>
+		<div class="p-4">
+			<button
+				id="close-menu"
+				class="btn ml-auto block"
+				aria-label="Menü schließen"
+			>
+				<Icon class="h-6 w-6" name="ion:close" />
+			</button>
+			<nav class="flex flex-col gap-4 mt-8">
+				<a
+					class="text-sm font-medium hover:text-[#fdd500] transition-colors"
+					href="#kontakt">Standort</a
+				>
+				<a
+					class="text-sm font-medium hover:text-[#fdd500] transition-colors"
+					href="https://toolbox24.mysharefox.com/help?header=4">Kontakt</a
+				>
+			</nav>
+		</div>
+	</div>
 </header>
 
 <style>
